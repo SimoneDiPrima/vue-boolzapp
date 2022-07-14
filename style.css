@@ -13,18 +13,20 @@ body{
     display:flex;
     flex-direction:row;
     height:100vh;
+    border: 1px solid gray;
+    background-image: url("img/mine.jpg");
    
 }
 
 .sidebar{
     width:400px;
     height: 100vh;
-    background-color:yellow;
+    background-color: white;
+    border-right:1px solid dodgerblue;
 }
 .main-section{
     height: 100vh;
     width:calc(100vw - 400px);
-    background-color:red;
 }
 
 .header-name-section{
@@ -45,4 +47,19 @@ body{
 .nome-conversazione{
     line-height: 100px;
     margin-left:5px;
+}
+.icons-header-section{
+    line-height: 100px;
+    margin-right:35px;
+}
+.center-icons{
+    margin:10px;
+}
+.main-message-section{
+    height:calc(100vh - 200px);
+    overflow-y: auto;
+}
+footer{
+    height:100px;
+    background-color: aqua;
 }
