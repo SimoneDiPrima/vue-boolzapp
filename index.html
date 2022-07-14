@@ -17,7 +17,7 @@
             <header class="header-name-section">
                 <div class="img-header-section">
                     <img src="img/avatar_1.jpg" class="header-image" alt="">
-                    <h4 id="nome-utente">MICHELE</h4>
+                    <h4 id="nome-utente">Simone</h4>
                 </div>
                 <div class="icons-header-section">
                     <i class="fa-solid fa-circle-notch"></i>
@@ -37,7 +37,8 @@
             </section>
             <main class="friends" id="listFriends">
                 <ul>
-                    <li v-for ="(face,friend in contacts" class="friendlist"><img  alt=""> {{ face.name }}</li>
+               <li v-for ="(face,friend) in contacts" class="friendlist" >
+                    {{ face.name }}</li>
                 </ul>
             </main>
         </div>
@@ -48,7 +49,7 @@
                         <img src="img/avatar_2.jpg" class="header-image" alt="">
                     </div>
                     <div class="name-userfriends">
-                        <h4>MARIO</h4>
+                        <h4>Mario</h4>
                         <span class="time-friends">ultimo accesso alle 16.40</span>
                     </div>
 
@@ -59,13 +60,13 @@
                     <i class="fa-solid fa-ellipsis-vertical"></i>
                 </div>
             </header>
-            <main class="main-message-section">
+            <section class="message-section">
                <div class="message" id="send">che fai questa sera giovane??</div>
                <div class="message" id="receive">studio dove andare in vacanza ad agosto quest anno!</div>
-            </main>
+            </section>
             <footer>
                 <div class="side-icons"><i class="fa-solid fa-smile"></i></div>
-                <label for="nome"></label><input class="input-section" type="text" name="nome" id="nome" placeholder="scrivi un messaggio"/>
+                <label for="nome"></label><input class="input-section" type="text" name="nome" id="name" placeholder="scrivi un messaggio"/>
                 <div class="side-icons"><i class="fa-solid fa-microphone"></i></div>
 
             </footer>

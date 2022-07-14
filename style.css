@@ -29,6 +29,7 @@ body{
 }
 #nome-utente{
     line-height: 100px;
+    margin-left:5px;
 }
 .main-section{
     height: 100vh;
@@ -67,7 +68,7 @@ body{
 .center-icons{
     margin:10px;
 }
-.main-message-section{
+.message-section{
     height:calc(100vh - 200px);
     overflow-y: auto;
 }
@@ -125,6 +126,7 @@ footer{
     font-weight: bolder;
     margin-top:20px;
     margin-left:20px;
+    height:100px;
 }
 .side-icons{
     font-size:300%;
