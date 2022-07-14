@@ -9,7 +9,7 @@
     <script src="https://kit.fontawesome.com/77b4cc17b1.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
     
-    <title>ESERCICCIO</title>
+    <title>VUE  BOOLZAPP</title>
 </head>
 <body>
    <div class="wrapper">
@@ -17,7 +17,7 @@
             <header class="header-name-section">
                 <div class="img-header-section">
                     <img src="img/avatar_1.jpg" class="header-image" alt="">
-                    <h4 class="nome-conversazione">MICHELE</h4>
+                    <h4 id="nome-utente">MICHELE</h4>
                 </div>
                 <div class="icons-header-section">
                     <i class="fa-solid fa-circle-notch"></i>
@@ -37,15 +37,21 @@
             </section>
             <main class="friends" id="listFriends">
                 <ul>
-                    <li v-for ="(face,friend in contacts" class="friendlist"> {{ face.name }}</li>
+                    <li v-for ="(face,friend in contacts" class="friendlist"><img  alt=""> {{ face.name }}</li>
                 </ul>
             </main>
         </div>
         <div class="main-section">
             <header class="header-name-section">
-                <div class="img-header-section">
-                    <img src="img/avatar_2.jpg" class="header-image" alt="">
-                    <h4 class="nome-conversazione">MARIO</h4>
+                <div class="image-flex">
+                    <div class="img-header-section">
+                        <img src="img/avatar_2.jpg" class="header-image" alt="">
+                    </div>
+                    <div class="name-userfriends">
+                        <h4>MARIO</h4>
+                        <span class="time-friends">ultimo accesso alle 16.40</span>
+                    </div>
+
                 </div>
                 <div class="icons-header-section">
                     <i class="fa-solid fa-magnifying-glass"></i>
