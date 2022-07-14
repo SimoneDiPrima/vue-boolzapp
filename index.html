@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="https://kit.fontawesome.com/77b4cc17b1.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
     
@@ -32,22 +32,13 @@
                     <a href="">ricevi le notifiche desktop</a>
                 </div>
             </section>
-            <main class="friends">
-                <p>Lorem ipsum dolor sits nam animi commodi? Perspiciatis velit sapiente aliquam.</p>
-                <p>Lorem ipsum dolor sits nam animi commodi? Perspiciatis velit sapiente aliquam.</p>
-                <p>Lorem ipsum dolor sits nam animi commodi? Perspiciatis velit sapiente aliquam.</p>
-                <p>Lorem ipsum dolor sits nam animi commodi? Perspiciatis velit sapiente aliquam.</p>
-                <p>Lorem ipsum dolor sits nam animi commodi? Perspiciatis velit sapiente aliquam.</p>
-                <p>Lorem ipsum dolor sits nam animi commodi? Perspiciatis velit sapiente aliquam.</p>
-                <p>Lorem ipsum dolor sits nam animi commodi? Perspiciatis velit sapiente aliquam.</p>
-                <p>Lorem ipsum dolor sits nam animi commodi? Perspiciatis velit sapiente aliquam.</p>
-                <p>Lorem ipsum dolor sits nam animi commodi? Perspiciatis velit sapiente aliquam.</p>
-                <p>Lorem ipsum dolor sits nam animi commodi? Perspiciatis velit sapiente aliquam.</p>
-                <p>Lorem ipsum dolor sits nam animi commodi? Perspiciatis velit sapiente aliquam.</p>
-                <p>Lorem ipsum dolor sits nam animi commodi? Perspiciatis velit sapiente aliquam.</p>
-                <p>Lorem ipsum dolor sits nam animi commodi? Perspiciatis velit sapiente aliquam.</p>
-                <p>Lorem ipsum dolor sits nam animi commodi? Perspiciatis velit sapiente aliquam.</p>
-                <p>Lorem ipsum dolor sits nam animi commodi? Perspiciatis velit sapiente aliquam.</p>
+            <section class="search-friends">
+                <label for="nome"></label><input type="text" class="search-section" name="nome" id="nome" placeholder="cerca o inizia una nuova chat"/>
+            </section>
+            <main class="friends" id="listFriends">
+                <ul>
+                    <li v-for ="(face,friend in contacts" class="friendlist"> {{ face.name }}</li>
+                </ul>
             </main>
         </div>
         <div class="main-section">
@@ -63,13 +54,17 @@
                 </div>
             </header>
             <main class="main-message-section">
-               
+               <div class="message" id="send">che fai questa sera giovane??</div>
+               <div class="message" id="receive">studio dove andare in vacanza ad agosto quest anno!</div>
             </main>
             <footer>
-
+                <div class="side-icons"><i class="fa-solid fa-smile"></i></div>
+                <label for="nome"></label><input class="input-section" type="text" name="nome" id="nome" placeholder="scrivi un messaggio"/>
+                <div class="side-icons"><i class="fa-solid fa-microphone"></i></div>
 
             </footer>
         </div>
    </div>
+   <script src="script.js"></script>
 </body>
 </html>
