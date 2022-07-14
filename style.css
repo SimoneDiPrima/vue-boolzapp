@@ -1,0 +1,28 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+body{
+    background-image: linear-gradient(to bottom, rgb(22, 121, 121) 20%, transparent 0%, white 100%);
+}
+
+.wrapper{
+    max-width:1200px;
+    margin:30px auto;
+    display:flex;
+    flex-direction:row;
+    height:100vh;
+   
+}
+
+.sidebar{
+    width:250px;
+    height: 100vh;
+    background-color:yellow;
+}
+.main-section{
+    height: 100vh;
+    width:calc(100vw - 250px);
+    background-color:red;
+}
