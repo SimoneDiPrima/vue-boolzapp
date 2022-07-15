@@ -5,7 +5,8 @@
 }
 body{
     height:100vh;
-    background-image: linear-gradient(to bottom, rgb(22, 121, 121) 20%, transparent 0%, white 100%);
+    background-image: linear-gradient(to bottom, #008069 20%, transparent 0%, white 100%);
+    font-family: Segoe UI,Helvetica Neue,Helvetica,Lucida Grande,Arial,Ubuntu,Cantarell,Fira Sans,sans-serif;;
 }
 
 .wrapper{
@@ -78,6 +79,8 @@ body{
 .message-section{
     height:calc(90vh - 200px);
     overflow-y: auto;
+    display:flex;
+    flex-direction: column;
 }
 footer{
     height:100px;
@@ -119,14 +122,16 @@ footer{
     height:80px;
     margin:10px;
     text-align: center;
-
 }
-#send{
+.message#send{
     background-color: green;
-    float:right;
+    align-self: flex-end;
+   
+    
 }
-#receive{float:left;
-    margin-top:120px;
+.message#receive{
+    background-color: white;
+    align-self: flex-start;
 }
 .friendlist{
     font-size:25px;
