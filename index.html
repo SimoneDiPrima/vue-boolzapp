@@ -12,66 +12,69 @@
     <title>VUE  BOOLZAPP</title>
 </head>
 <body>
-   <div class="wrapper">
-        <div class="sidebar">
-            <header class="header-name-section">
-                <div class="img-header-section">
-                    <img src="img/avatar_1.jpg" class="header-image" alt="">
-                    <h4 id="nome-utente">Simone</h4>
-                </div>
-                <div class="icons-header-section">
-                    <i class="fa-solid fa-circle-notch"></i>
-                    <i class="fa-solid fa-message center-icons"></i>
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                </div>
-            </header>
-            <section class="alert-message">
-                <i class="fa-solid fa-bell-slash icon-alert-message"></i>
-                <div class="text-alert-message">
-                    <h3>ricevi le notifiche di nuovi messaggi</h3>
-                    <a href="">ricevi le notifiche desktop</a>
-                </div>
-            </section>
-            <section class="search-friends">
-                <label for="nome"></label><input type="text" class="search-section" name="nome" id="nome" placeholder="cerca o inizia una nuova chat"/>
-            </section>
-            <main class="friends" id="listFriends">
-                <ul>
-               <li v-for ="(face,friend) in contacts" class="friendlist" >
-                    {{ face.name }}</li>
-                </ul>
-            </main>
-        </div>
-        <div class="main-section">
-            <header class="header-name-section">
-                <div class="image-flex">
+    <div id="listFriends">
+        <div class="wrapper">
+            <div class="sidebar">
+                <header class="header-name-section">
                     <div class="img-header-section">
-                        <img src="img/avatar_2.jpg" class="header-image" alt="">
+                        <img src="img/avatar_1.jpg" class="header-image" alt="">
+                        <h4 id="nome-utente">{{ user.name }}</h4>
                     </div>
-                    <div class="name-userfriends">
-                        <h4>Mario</h4>
-                        <span class="time-friends">ultimo accesso alle 16.40</span>
+                    <div class="icons-header-section">
+                        <i class="fa-solid fa-circle-notch" role="button"></i>
+                        <i class="fa-solid fa-message center-icons" role="button"></i>
+                        <i class="fa-solid fa-ellipsis-vertical" role="button"></i>
                     </div>
-
+                </header>
+                <section class="alert-message">
+                    <i class="fa-solid fa-bell-slash icon-alert-message" role="button"></i>
+                    <div class="text-alert-message">
+                        <h3>ricevi le notifiche di nuovi messaggi</h3>
+                        <a href="">ricevi le notifiche desktop</a>
+                    </div>
+                </section>
+                <section class="search-friends">
+                    <label for="nome"></label><input type="text" class="search-section" name="nome" id="nome" placeholder="cerca o inizia una nuova chat"/>
+                </section>
+                <main class="friends">
+                    <ul>
+                        <li v-for ="(face,friend) in contacts" class="friendlist" >
+                            <figure>
+                                <img :src="`img/avatar${face.avatar}.jpg`" class="contact-image" alt="">
+                            </figure>
+                        {{ face.name }}</li>
+                    </ul>
+                </main>
                 </div>
-                <div class="icons-header-section">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <i class="fa-solid fa-paperclip center-icons"></i>
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                </div>
-            </header>
-            <section class="message-section">
-               <div class="message" id="send">che fai questa sera giovane??</div>
-               <div class="message" id="receive">studio dove andare in vacanza ad agosto quest anno!</div>
-            </section>
-            <footer>
-                <div class="side-icons"><i class="fa-solid fa-smile"></i></div>
-                <label for="nome"></label><input class="input-section" type="text" name="nome" id="name" placeholder="scrivi un messaggio"/>
-                <div class="side-icons"><i class="fa-solid fa-microphone"></i></div>
-
-            </footer>
+                <section class="main-section">
+                    <header class="header-name-section">
+                        <div class="image-flex">
+                            <div class="img-header-section">
+                                <img src="img/avatar_2.jpg" class="header-image" alt="">
+                            </div>
+                            <div class="name-userfriends">
+                                <h4>Mario</h4>
+                                <span class="time-friends">ultimo accesso alle 16.40</span>
+                            </div>
+                        </div>
+                        <div class="icons-header-section">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <i class="fa-solid fa-paperclip center-icons"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </div>
+                    </header>
+                    <section class="message-section">
+                        <div class="message" id="send">che fai questa sera giovane??</div>
+                        <div class="message" id="receive">studio dove andare in vacanza ad agosto quest anno!</div>
+                    </section>
+                    <footer>
+                        <div class="side-icons"><i class="fa-solid fa-smile"></i></div>
+                        <label for="nome"></label><input class="input-section" type="text" name="nome" id="name" placeholder="scrivi un messaggio"/>
+                        <div class="side-icons"><i class="fa-solid fa-microphone"></i></div>
+                    </footer>
+                </section>
         </div>
-   </div>
+    </div>
    <script src="script.js"></script>
 </body>
 </html>
