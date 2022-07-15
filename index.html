@@ -65,10 +65,9 @@
                         </div>
                     </header>
                     <section class="message-section">
-                        <div v-for="(message,index) in contacts">
-                            <div v-if="contacts.status === sent " class="message">{{ message.messages[0].text }}</div>
-                            <div v-else class="message">{{ message.messages[0].text }}</div>
-                        </div>
+                        <div v-for="(message,index) in contacts[0].messages" :value="message.value">
+                             <div class="message">{{ message.text }}</div>
+                         </div>
                      
                        
                      
