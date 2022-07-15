@@ -17,7 +17,7 @@
             <div class="sidebar">
                 <header class="header-name-section">
                     <div class="img-header-section">
-                        <img src="img/avatar_1.jpg" class="header-image" alt="">
+                        <img src="img/avatar_1.jpg" class="contact-image" alt="">
                         <h4 id="nome-utente">{{ user.name }}</h4>
                     </div>
                     <div class="icons-header-section">
@@ -42,7 +42,8 @@
                             <figure>
                                 <img :src="`img/avatar${face.avatar}.jpg`" class="contact-image" alt="">
                             </figure>
-                        {{ face.name }}</li>
+                            <h6> {{ face.name }}</h6>
+                        </li>
                     </ul>
                 </main>
                 </div>
@@ -50,7 +51,7 @@
                     <header class="header-name-section">
                         <div class="image-flex">
                             <div class="img-header-section">
-                                <img src="img/avatar_2.jpg" class="header-image" alt="">
+                                <img src="img/avatar_2.jpg" class="contact-image" alt="">
                             </div>
                             <div class="name-userfriends">
                                 <h4>Mario</h4>
