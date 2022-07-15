@@ -123,13 +123,11 @@ footer{
     margin:10px;
     text-align: center;
 }
-.message#send{
+.message.send{
     background-color: green;
     align-self: flex-end;
-   
-    
 }
-.message#receive{
+.message.receive{
     background-color: white;
     align-self: flex-start;
 }
@@ -161,4 +159,11 @@ footer{
 }
 .w-90{
     width:90%;
+}
+
+
+
+
+img .active{
+    display:block;
 }

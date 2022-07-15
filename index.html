@@ -38,9 +38,9 @@
                 </section>
                 <main class="friends">
                     <ul>
-                        <li v-for ="(face,friend) in contacts" class="friendlist" >
+                        <li v-for ="(face,friend) in contacts" class="friendlist" v-on:click="gotoFriends(friend)" >
                             <figure>
-                                <img :src="`img/avatar${face.avatar}.jpg`" class="contact-image" alt="">
+                                <img :src="`img/avatar${face.avatar}.jpg`" class="contact-image" alt="" />
                             </figure>
                             <h6> {{ face.name }}</h6>
                         </li>
@@ -65,14 +65,11 @@
                         </div>
                     </header>
                     <section class="message-section">
-                        <div class="message" id="send">che fai questa sera giovane??</div>
-                        <div class="message" id="receive">studio dove andare in vacanza ad agosto quest anno!</div>
-                        <div class="message" id="send">che fai questa sera giovane??</div>
-                        <div class="message" id="receive">studio dove andare in vacanza ad agosto quest anno!</div>
-                        <div class="message" id="send">che fai questa sera giovane??</div>
-                        <div class="message" id="receive">studio dove andare in vacanza ad agosto quest anno!</div>
-                        <div class="message" id="send">che fai questa sera giovane??</div>
-                        <div class="message" id="receive">studio dove andare in vacanza ad agosto quest anno!</div>
+                     <div class="message" v-for="message in contacts">{{ message.messages[0].text }}</div>
+                       
+                     
+                     
+                       
                     </section>
                     <footer>
                         <div class="side-icons"><i class="fa-solid fa-smile"></i></div>

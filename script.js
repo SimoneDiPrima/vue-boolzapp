@@ -2,6 +2,7 @@
 const friends = new Vue({
     el:`#listFriends`,
     data:{
+        currentIndex : 0,
         user: {
             name: 'Nome Utente',
             avatar: '_io',
@@ -87,5 +88,10 @@ const friends = new Vue({
               ],
             },
           ]
+        },
+        methods:{
+          goToFriends(index){
+            
+          }
         }
     })
