@@ -38,7 +38,8 @@
                 </section>
                 <main class="friends">
                     <ul>
-                        <li v-for ="(face,friend) in contacts" class="friendlist" v-on:click="gotoFriends(friend)" >
+                        <li v-for ="(face,index) in contacts" class="friendlist" :class="currentIndex === index ? `active` : ` `"
+                        @click="goToChat(index)">
                             <figure>
                                 <img :src="`img/avatar${face.avatar}.jpg`" class="contact-image" alt="" />
                             </figure>
@@ -51,10 +52,10 @@
                     <header class="header-name-section">
                         <div class="image-flex">
                             <div class="img-header-section">
-                                <img src="img/avatar_2.jpg" class="contact-image" alt="">
+                                <img :src="`img/avatar${contacts[currentIndex].avatar}.jpg`" class="contact-image" alt="">
                             </div>
                             <div class="name-userfriends">
-                                <h4>Mario</h4>
+                                <h4>{{ contacts[currentIndex].name }}</h4>
                                 <span class="time-friends">ultimo accesso alle 16.40</span>
                             </div>
                         </div>
@@ -64,15 +65,14 @@
                             <i class="fa-solid fa-ellipsis-vertical" role="button"></i>
                         </div>
                     </header>
-                    <section class="message-section">
-                        <div v-for="(message,index) in contacts[0].messages" :value="message.value">
-                             <div class="message">{{ message.text }}</div>
+                    <section class="messageSection">
+                        <div>
+                             <div class="message" v-for="(message,index) in contacts[currentIndex].messages"
+                             :class="currentIndex === index ? `active` : ` `">{{ message.text }}</div>
                          </div>
                      
                        
-                     
-                     
-                       
+
                     </section>
                     <footer>
                         <div class="side-icons"><i class="fa-solid fa-smile"></i></div>

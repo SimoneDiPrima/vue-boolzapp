@@ -90,8 +90,8 @@ const friends = new Vue({
           ]
         },
         methods:{
-          goToFriends(index){
-            
-          }
+         goToChat(index){
+          this.currentIndex = index;
+         }
         }
     })

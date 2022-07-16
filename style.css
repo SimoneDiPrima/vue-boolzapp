@@ -76,7 +76,7 @@ body{
 .center-icons{
     margin:10px;
 }
-.message-section{
+.messageSection{
     height:calc(90vh - 200px);
     overflow-y: auto;
     display:flex;
