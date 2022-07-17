@@ -7,6 +7,11 @@ const friends = new Vue({
             name: 'Nome Utente',
             avatar: '_io',
           },
+          newMessages:{
+            text:``,
+            date:'10/01/2020 15:50:00',
+            status:`sent`
+          },
           contacts: [
             {
               name: 'Michele',
@@ -92,6 +97,24 @@ const friends = new Vue({
         methods:{
          goToChat(index){
           this.currentIndex = index;
-         }
+         },
+         addMessages(){
+         
+          let addedMessages = {text:this.newMessages,date:this.date,status:this.status}
+          
+            this.contacts[this.currentIndex].messages.push(addedMessages.text)
+            this.newMessages = ``;
+          
+          
+          setTimeout(()=>{
+            const autoMessage = {
+              text: `sei sicuro??`,
+              date: '10/01/2020 15:50:00',
+              status: 'received'
+            }
+            this.contacts[this.currentIndex].messages.push(autoMessage)
+          },2500)
+         },
+        
         }
     })
