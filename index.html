@@ -1,111 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- vue js -->
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <!-- dayjs -->
-    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"></script>
-    <!-- dayjs plugin -->
-    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/plugin/customParseFormat.js"></script>
-    <!-- fontawesome -->
-    <script src="https://kit.fontawesome.com/77b4cc17b1.js" crossorigin="anonymous"></script>
-    <!-- google font family -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,700;1,400&display=swap" rel="stylesheet">
-    <!-- css -->
-    <link rel="stylesheet" href="style.css">
-    
-    <title>VUE  BOOLZAPP</title>
-</head>
-<body>
-    <div id="listFriends">
-        <div class="wrapper">
-            <!-- sezione commenti a sinistra -->
-            <div class="sidebar">
-                <!-- sezione interna con nome utente e immagine utente -->
-                <header class="header-name-section">
-                    <div class="image-flex">
-                        <img src="img/avatar_1.jpg" class="contact-image" alt="">
-                        <h4 id="nome-utente">{{ user.name }}</h4>
-                    </div>
-                    <div class="icons-header-section">
-                        <i class="fa-solid fa-circle-notch" role="button"></i>
-                        <i class="fa-solid fa-message center-icons" role="button"></i>
-                        <i class="fa-solid fa-ellipsis-vertical" role="button"></i>
-                    </div>
-                </header>
-                <!-- sezione notifiche messaggi -->
-                <section class="alert-message">
-                    <i class="fa-solid fa-bell-slash icon-alert-message" role="button"></i>
-                    <div class="text-alert-message">
-                        <h3>ricevi le notifiche di nuovi messaggi</h3>
-                        <a href="">ricevi le notifiche desktop</a>
-                    </div>
-                </section>
-                <!-- sezione ricerca conversazioni amici -->
-                <section class="search-friends">
-                    <input type="text" id="search-input" name="nome" id="nome" placeholder="cerca o inizia una nuova chat" v-model.trim="searchFriend"/>
-                    <i class="fa-solid fa-magnifying-glass" id="iconSearch"></i>
-                </section>
-                <!-- sezione menu "amici" -->
-                <section class="friends">
-                    <ul>
-                        <li v-for ="(face,index) in contacts" class="friendlist" :class="currentIndex === index ? `active` : ` `"
-                            v-if="searchFriends(face)"   @click="goToChat(index)" >
-                            <figure>
-                                <img :src="`img/avatar${face.avatar}.jpg`" class="contact-image" alt="" />
-                            </figure>
-                            <h6> {{ face.name }}</h6>
-                        </li>
-                    </ul>
-                </section>
-            </div>
-            <!-- sezione principale conversazioni -->
-            <main class="main-section">
-                <!-- intestazione sezione principale main -->
-                <header class="header-name-section">
-                    <div class="image-flex">
-                        <div class="img-header-section">
-                            <img :src="`img/avatar${contacts[currentIndex].avatar}.jpg`" class="contact-image" alt="">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- vue js -->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+        <!-- dayjs -->
+        <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"></script>
+        <!-- dayjs plugin -->
+        <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/plugin/customParseFormat.js"></script>
+        <!-- fontawesome -->
+        <script src="https://kit.fontawesome.com/77b4cc17b1.js" crossorigin="anonymous"></script>
+        <!-- google font family -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,700;1,400&display=swap" rel="stylesheet">
+        <!-- css -->
+        <link rel="stylesheet" href="style.css">
+        
+        <title>VUE  BOOLZAPP</title>
+    </head>
+    <body>
+        <div id="listFriends">
+            <div class="wrapper">
+                <!-- sezione commenti a sinistra -->
+                <div class="sidebar">
+                    <!-- sezione interna con nome utente e immagine utente -->
+                    <header class="header-name-section">
+                        <div class="image-flex">
+                            <img src="img/avatar_1.jpg" class="contact-image" alt="">
+                            <h4 id="nome-utente">{{ user.name }}</h4>
                         </div>
-                        <div class="name-userfriends">
-                            <h4>{{ contacts[currentIndex].name }}</h4>
-                            <span class="time-friends">ultimo accesso oggi alle 16.40</span>
+                        <div class="icons-header-section">
+                            <i class="fa-solid fa-circle-notch" role="button"></i>
+                            <i class="fa-solid fa-message center-icons" role="button"></i>
+                            <i class="fa-solid fa-ellipsis-vertical" role="button"></i>
                         </div>
-                    </div>
-                    <div class="icons-header-section">
-                        <i class="fa-solid fa-magnifying-glass" role="button"></i>
-                        <i class="fa-solid fa-paperclip center-icons" role="button"></i>
-                        <i class="fa-solid fa-ellipsis-vertical" role="button"></i>
-                    </div>
-                </header>
-                    <!-- sezione conversazioni utente -->
-                <section class="messageSection">
-                    <div v-for="(message,index) in contacts[currentIndex].messages"
-                        :class="currentIndex === index ? `active` : ` `" >
-                        <div class="message-position">
-                            <div class="message"  :class="message.status">
-                                <div class="text-message">
-                                    <p>{{ message.text }}</p>
-                                    <p class="date-message"> {{ message.date }}</p>
-                                </div> 
+                    </header>
+                    <!-- sezione notifiche messaggi -->
+                    <section class="alert-message">
+                        <i class="fa-solid fa-bell-slash icon-alert-message" role="button"></i>
+                        <div class="text-alert-message">
+                            <h3>ricevi le notifiche di nuovi messaggi</h3>
+                            <a href="">ricevi le notifiche desktop</a>
+                        </div>
+                    </section>
+                    <!-- sezione ricerca conversazioni amici -->
+                    <section class="search-friends">
+                        <input type="text" id="search-input" name="nome" id="nome" placeholder="cerca o inizia una nuova chat" v-model.trim="searchFriend"/>
+                        <i class="fa-solid fa-magnifying-glass" id="iconSearch"></i>
+                    </section>
+                    <!-- sezione menu "amici" -->
+                    <section class="friends">
+                        <ul>
+                            <li v-for ="(face,index) in contacts" class="friendlist" :class="currentIndex === index ? `active` : ` `"
+                                v-if="searchFriends(face)"   @click="goToChat(index)" >
+                                <figure>
+                                    <img :src="`img/avatar${face.avatar}.jpg`" class="contact-image" alt="" />
+                                </figure>
+                                <h6> {{ face.name }}</h6>
+                            </li>
+                        </ul>
+                    </section>
+                </div>
+                <!-- sezione principale conversazioni -->
+                <main class="main-section">
+                    <!-- intestazione sezione principale main -->
+                    <header class="header-name-section">
+                        <div class="image-flex">
+                            <div class="img-header-section">
+                                <img :src="`img/avatar${contacts[currentIndex].avatar}.jpg`" class="contact-image" alt="">
+                            </div>
+                            <div class="name-userfriends">
+                                <h4>{{ contacts[currentIndex].name }}</h4>
+                                <span class="time-friends">ultimo accesso oggi alle 16.40</span>
                             </div>
                         </div>
-                    </div>
-                </section>
-                    <!-- sezione scrivi un nuovo messaggio -->
-                <footer>
-                    <div class="side-icons"><i class="fa-solid fa-smile"></i></div>
-                    <input class="input-section" type="text" name="nome" id="name" placeholder="scrivi un messaggio" v-model.trim="newMessages.text"  @keyup.enter ="addMessages"/>
-                    <div class="side-icons"><i class="fa-solid fa-microphone"></i></div> 
-                </footer>
-            </main>
+                        <div class="icons-header-section">
+                            <i class="fa-solid fa-magnifying-glass" role="button"></i>
+                            <i class="fa-solid fa-paperclip center-icons" role="button"></i>
+                            <i class="fa-solid fa-ellipsis-vertical" role="button"></i>
+                        </div>
+                    </header>
+                        <!-- sezione conversazioni utente -->
+                    <section class="messageSection">
+                        <div v-for="(message,index) in contacts[currentIndex].messages"
+                            :class="currentIndex === index ? `active` : ` `" >
+                            <div class="message-position">
+                                <div class="message"  :class="message.status">
+                                    <div class="text-message">
+                                        <p>{{ message.text }}</p>
+                                        <p class="date-message"> {{ message.date }}</p>
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                        <!-- sezione scrivi un nuovo messaggio -->
+                    <footer>
+                        <div class="side-icons"><i class="fa-solid fa-smile"></i></div>
+                        <input class="input-section" type="text" name="nome" id="name" placeholder="scrivi un messaggio" v-model.trim="newMessages.text"  @keyup.enter ="addMessages"/>
+                        <div class="side-icons"><i class="fa-solid fa-microphone"></i></div> 
+                    </footer>
+                </main>
+            </div>
         </div>
-    </div>
-    <script src="script.js"></script>
-</body>
+        <script src="script.js"></script>
+    </body>
 </html>
