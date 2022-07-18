@@ -3,13 +3,14 @@ const friends = new Vue({
     el:`#listFriends`,
     data:{
         currentIndex : 0,
+        searchFriend : ``,
         user: {
             name: 'Nome Utente',
             avatar: '_io',
           },
           newMessages:{
             text:``,
-            date:'10/01/2020 15:50:00',
+            date: dayjs().format(`DD-MM-YYYY HH:mm:ss`),
             status:`sent`
           },
           contacts: [
@@ -99,22 +100,20 @@ const friends = new Vue({
           this.currentIndex = index;
          },
          addMessages(){
+          if(!this.newMessages.text)return;
          
-          let addedMessages = {text:this.newMessages,date:this.date,status:this.status}
+          const addedMessages = {text:this.newMessages,date:this.date,status:this.status}
           
             this.contacts[this.currentIndex].messages.push(addedMessages.text)
             this.newMessages = ``;
           
-          
           setTimeout(()=>{
             const autoMessage = {
-              text: `sei sicuro??`,
-              date: '10/01/2020 15:50:00',
+              text: `ok`,
+              date: dayjs().format(`DD-MM-YYYY HH:mm:ss`),
               status: 'received'
             }
             this.contacts[this.currentIndex].messages.push(autoMessage)
-          },2500)
+          },1000)
          },
-        
-        }
-    })
+    }})

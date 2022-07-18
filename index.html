@@ -4,9 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
+    <!-- vue js -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <!-- dayjs -->
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"></script>
+    <!-- dayjs plugin -->
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/plugin/customParseFormat.js"></script>
+    <!-- fontawesome -->
     <script src="https://kit.fontawesome.com/77b4cc17b1.js" crossorigin="anonymous"></script>
+    <!-- google font family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- css -->
     <link rel="stylesheet" href="style.css">
     
     <title>VUE  BOOLZAPP</title>
@@ -35,7 +45,7 @@
                 </section>
                 <section class="search-friends">
                     <i class="fa-solid fa-magnifying-glass" id="iconSearch"></i>
-                    <input type="text" id="search-input" name="nome" id="nome" placeholder="cerca o inizia una nuova chat"/>
+                    <input type="text" id="search-input" name="nome" id="nome" placeholder="cerca o inizia una nuova chat" v-model="searchFriend"/>
                     <i class="fa-solid fa-magnifying-glass" id="iconSearch"></i>
                 </section>
                 <main class="friends">
@@ -71,16 +81,16 @@
                         <div v-for="(message,index) in contacts[currentIndex].messages"
                              :class="currentIndex === index ? `active` : ` `" >
                             <div class="message-position">
-                                <div class="message" :class="message.status">
+                                <msg class="message" :class="message.status">
                                     {{ message.text }}
                                     <div class="date-message">{{ message.date }}</div>
-                                </div>
+                                </msg>
                              </div>
                         </div>
                     </section>
                     <footer>
                         <div class="side-icons"><i class="fa-solid fa-smile"></i></div>
-                        <input size="90" type="text" name="nome" id="name" placeholder="scrivi un messaggio" v-model="newMessages.text"  @keyup.enter ="addMessages"  />
+                        <input class="input-section" type="text" name="nome" id="name" placeholder="scrivi un messaggio" v-model.trim="newMessages.text"  @keyup.enter ="addMessages"  />
                         <div class="side-icons"><i class="fa-solid fa-microphone"></i></div> 
                     </footer>
             </section>
