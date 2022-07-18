@@ -24,7 +24,9 @@
 <body>
     <div id="listFriends">
         <div class="wrapper">
+            <!-- sezione commenti a sinistra -->
             <div class="sidebar">
+                <!-- sezione interna con nome utente e immagine utente -->
                 <header class="header-name-section">
                     <div class="image-flex">
                         <img src="img/avatar_1.jpg" class="contact-image" alt="">
@@ -36,6 +38,7 @@
                         <i class="fa-solid fa-ellipsis-vertical" role="button"></i>
                     </div>
                 </header>
+                <!-- sezione notifiche messaggi -->
                 <section class="alert-message">
                     <i class="fa-solid fa-bell-slash icon-alert-message" role="button"></i>
                     <div class="text-alert-message">
@@ -43,57 +46,64 @@
                         <a href="">ricevi le notifiche desktop</a>
                     </div>
                 </section>
+                <!-- sezione ricerca conversazioni amici -->
                 <section class="search-friends">
-                    <i class="fa-solid fa-magnifying-glass" id="iconSearch"></i>
-                    <input type="text" id="search-input" name="nome" id="nome" placeholder="cerca o inizia una nuova chat" v-model="searchFriend"/>
+                    <input type="text" id="search-input" name="nome" id="nome" placeholder="cerca o inizia una nuova chat" v-model.trim="searchFriend"/>
                     <i class="fa-solid fa-magnifying-glass" id="iconSearch"></i>
                 </section>
-                <main class="friends">
+                <!-- sezione menu "amici" -->
+                <section class="friends">
                     <ul>
                         <li v-for ="(face,index) in contacts" class="friendlist" :class="currentIndex === index ? `active` : ` `"
-                        @click="goToChat(index)">
+                            v-if="searchFriends(face)"   @click="goToChat(index)" >
                             <figure>
                                 <img :src="`img/avatar${face.avatar}.jpg`" class="contact-image" alt="" />
                             </figure>
                             <h6> {{ face.name }}</h6>
                         </li>
                     </ul>
-                </main>
+                </section>
             </div>
-            <section class="main-section">
-                    <header class="header-name-section">
-                        <div class="image-flex">
-                            <div class="img-header-section">
-                                <img :src="`img/avatar${contacts[currentIndex].avatar}.jpg`" class="contact-image" alt="">
+            <!-- sezione principale conversazioni -->
+            <main class="main-section">
+                <!-- intestazione sezione principale main -->
+                <header class="header-name-section">
+                    <div class="image-flex">
+                        <div class="img-header-section">
+                            <img :src="`img/avatar${contacts[currentIndex].avatar}.jpg`" class="contact-image" alt="">
+                        </div>
+                        <div class="name-userfriends">
+                            <h4>{{ contacts[currentIndex].name }}</h4>
+                            <span class="time-friends">ultimo accesso oggi alle 16.40</span>
+                        </div>
+                    </div>
+                    <div class="icons-header-section">
+                        <i class="fa-solid fa-magnifying-glass" role="button"></i>
+                        <i class="fa-solid fa-paperclip center-icons" role="button"></i>
+                        <i class="fa-solid fa-ellipsis-vertical" role="button"></i>
+                    </div>
+                </header>
+                    <!-- sezione conversazioni utente -->
+                <section class="messageSection">
+                    <div v-for="(message,index) in contacts[currentIndex].messages"
+                        :class="currentIndex === index ? `active` : ` `" >
+                        <div class="message-position">
+                            <div class="message"  :class="message.status">
+                                <div class="text-message">
+                                    <p>{{ message.text }}</p>
+                                    <p class="date-message"> {{ message.date }}</p>
+                                </div> 
                             </div>
-                            <div class="name-userfriends">
-                                <h4>{{ contacts[currentIndex].name }}</h4>
-                                <span class="time-friends">ultimo accesso oggi alle 16.40</span>
-                            </div>
                         </div>
-                        <div class="icons-header-section">
-                            <i class="fa-solid fa-magnifying-glass" role="button"></i>
-                            <i class="fa-solid fa-paperclip center-icons" role="button"></i>
-                            <i class="fa-solid fa-ellipsis-vertical" role="button"></i>
-                        </div>
-                    </header>
-                    <section class="messageSection">
-                        <div v-for="(message,index) in contacts[currentIndex].messages"
-                             :class="currentIndex === index ? `active` : ` `" >
-                            <div class="message-position">
-                                <msg class="message" :class="message.status">
-                                    {{ message.text }}
-                                    <div class="date-message">{{ message.date }}</div>
-                                </msg>
-                             </div>
-                        </div>
-                    </section>
-                    <footer>
-                        <div class="side-icons"><i class="fa-solid fa-smile"></i></div>
-                        <input class="input-section" type="text" name="nome" id="name" placeholder="scrivi un messaggio" v-model.trim="newMessages.text"  @keyup.enter ="addMessages"  />
-                        <div class="side-icons"><i class="fa-solid fa-microphone"></i></div> 
-                    </footer>
-            </section>
+                    </div>
+                </section>
+                    <!-- sezione scrivi un nuovo messaggio -->
+                <footer>
+                    <div class="side-icons"><i class="fa-solid fa-smile"></i></div>
+                    <input class="input-section" type="text" name="nome" id="name" placeholder="scrivi un messaggio" v-model.trim="newMessages.text"  @keyup.enter ="addMessages"/>
+                    <div class="side-icons"><i class="fa-solid fa-microphone"></i></div> 
+                </footer>
+            </main>
         </div>
     </div>
     <script src="script.js"></script>

@@ -1,11 +1,12 @@
 
 const friends = new Vue({
     el:`#listFriends`,
+    name:`My First App`,
     data:{
         currentIndex : 0,
         searchFriend : ``,
         user: {
-            name: 'Nome Utente',
+            name: 'Simone',
             avatar: '_io',
           },
           newMessages:{
@@ -96,24 +97,31 @@ const friends = new Vue({
           ]
         },
         methods:{
+        
          goToChat(index){
           this.currentIndex = index;
          },
+        
          addMessages(){
           if(!this.newMessages.text)return;
-         
-          const addedMessages = {text:this.newMessages,date:this.date,status:this.status}
-          
+           const addedMessages = {text:this.newMessages,date:this.date,status:this.status}
             this.contacts[this.currentIndex].messages.push(addedMessages.text)
             this.newMessages = ``;
-          
-          setTimeout(()=>{
-            const autoMessage = {
-              text: `ok`,
+
+          // funzione per risposta automatica(da rivedere nella versione bootstrap)
+          setTimeout(()=>{     
+           const autoMessage = {
+             text: `ok`,
               date: dayjs().format(`DD-MM-YYYY HH:mm:ss`),
               status: 'received'
             }
             this.contacts[this.currentIndex].messages.push(autoMessage)
           },1000)
          },
+         searchFriends(face){
+          if(this.searchFriend === `` ) return true;
+          else{
+            return face.name.toLowerCase().includes(this.searchFriend);
+          }
+         }
     }})
