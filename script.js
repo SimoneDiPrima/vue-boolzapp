@@ -99,7 +99,7 @@ const friends = new Vue({
         methods:{
         
          goToChat(index){
-          this.currentIndex = index;
+         return this.currentIndex = index;
          },
         
          addMessages(){
