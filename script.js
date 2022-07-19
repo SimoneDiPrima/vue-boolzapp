@@ -115,7 +115,7 @@ const friends = new Vue({
               date: dayjs().format(`DD-MM-YYYY HH:mm:ss`),
               status: 'received'
             }
-            this.contacts[this.currentIndex].messages.push(autoMessage)
+           return this.contacts[this.currentIndex].messages.push(autoMessage)
           },1000)
          },
          searchFriends(face){
