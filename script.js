@@ -110,12 +110,14 @@ const friends = new Vue({
 
           // funzione per risposta automatica(da rivedere nella versione bootstrap)
           setTimeout(()=>{     
-           const autoMessage = {
-             text: `ok`,
-              date: dayjs().format(`DD-MM-YYYY HH:mm:ss`),
-              status: 'received'
+            for(i=0;i<100;i++){
+              const autoMessage = {
+                text: `ok`,
+                 date: dayjs().format(`DD-MM-YYYY HH:mm:ss`),
+                 status: 'received'
+               }
+               return this.contacts[this.currentIndex].messages.push(autoMessage)
             }
-           return this.contacts[this.currentIndex].messages.push(autoMessage)
           },1000)
          },
          searchFriends(face){
