@@ -134,7 +134,7 @@ footer{
     border-radius: 10%;
     padding:5px;
     height:80px;
-    max-width:200px;
+    min-width:250px;
     margin:10px;
    position:relative;
    background-color: white;
@@ -147,8 +147,8 @@ footer{
     top:50%;
     left:50%;
     transform: translate(-50%,-50%);
-   margin:0 5px;
-    width:100%;
+  text-align:center;
+  width:80%;
 }
 .date-message{
     margin-left:80px;
@@ -162,8 +162,11 @@ footer{
 
 .sent{
    background-color: green;
-   align-self: flex-end;
-   width:60%;  
+   align-self: flex-end; 
+}
+.received{
+    width:250px;
+    max-width:60%;
 }
 .friendlist{
     font-size:25px;
