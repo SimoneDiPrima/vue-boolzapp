@@ -4,6 +4,7 @@
     margin:0;
     padding:0;
     box-sizing: border-box;
+    font-weight: 400;
 }
 body{
     height:100vh;
@@ -131,7 +132,7 @@ footer{
 }
 .message{
     border:1px solid transparent;
-    border-radius: 10%;
+    border-radius: 5%;
     padding:5px;
     height:80px;
     min-width:250px;
@@ -142,18 +143,18 @@ footer{
 }
 .text-message{
     font-size: 15px;
-    font-weight:500;
     position:absolute;
     top:50%;
     left:50%;
     transform: translate(-50%,-50%);
-  text-align:center;
+  text-align:left;
   width:80%;
 }
 .date-message{
     margin-left:80px;
     margin-top:10px;
     font-size: 10px;
+    color:gray;
 }
 .message-position{
     display: flex;
